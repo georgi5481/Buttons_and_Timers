@@ -20,7 +20,9 @@ add_library(
 	${_INC_DIR}/drawing/Widget.h	
 	${_INC_DIR}/drawing/Image.h	
 	${_INC_DIR}/drawing/Text.h	
-		
+	${_INC_DIR}/input/ButtonBase.h	
+	
+	${_SRC_DIR}/input/ButtonBase.cpp	
 	${_SRC_DIR}/drawing/Text.cpp
 	${_SRC_DIR}/drawing/Widget.cpp
 	${_SRC_DIR}/drawing/Image.cpp

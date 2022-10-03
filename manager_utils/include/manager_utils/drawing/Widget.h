@@ -56,6 +56,10 @@ public:
 
 	//move methods could be added for convenience
 	//show & hide methods could also be implemented for convenience
+
+
+	bool containsPoint(const Point& point)const;
+
 protected:
 	DrawParams _drawParams;
 

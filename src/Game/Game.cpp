@@ -1,4 +1,4 @@
-//Corresponding header3
+//Corresponding header
 #include "include/Game/Game.h"
 //C system includes
 
