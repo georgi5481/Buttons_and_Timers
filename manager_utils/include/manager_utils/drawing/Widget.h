@@ -58,7 +58,7 @@ public:
 	//show & hide methods could also be implemented for convenience
 
 
-	bool containsPoint(const Point& point)const;
+	bool containsPoint(const Point& pos)const;
 
 protected:
 	DrawParams _drawParams;

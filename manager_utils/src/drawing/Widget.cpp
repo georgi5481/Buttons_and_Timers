@@ -124,3 +124,12 @@ void Widget::moveDown(int32_t delta) {
 	_drawParams.pos.y += delta;
 }
 
+
+bool Widget::containsPoint(const Point& pos)const{
+	const Rectangle bound(_drawParams.pos.x, _drawParams.pos.y,
+							_drawParams.width, _drawParams.height);
+	return bound.isPointInside(pos);
+
+}
+
+
