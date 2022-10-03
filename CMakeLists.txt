@@ -53,7 +53,7 @@ enable_target_warnings(${PROJECT_NAME})
 target_include_directories(
 ${PROJECT_NAME} 
 	PRIVATE 
-		${_BASE_DIR}
+		${_BASE_DIR}		#we include the directory we want to scan/obtain with the cmake and the cpp files
 )
 target_link_libraries(
 ${PROJECT_NAME} 
