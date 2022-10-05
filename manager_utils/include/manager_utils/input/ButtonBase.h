@@ -24,8 +24,6 @@ virtual ~ButtonBase() = default;	//since we have at least 1 pure virtual functio
 
 virtual void handleEvent(const InputEvent & e) = 0; //pure virtual member function
 
-void create (int32_t rsrcId, const Point &pos = Point::ZERO);
-
 void lockInput();
 
 void unlockInput();
