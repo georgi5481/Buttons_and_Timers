@@ -58,7 +58,7 @@ public:
 	//show & hide methods could also be implemented for convenience
 
 
-	bool containsPoint(const Point& pos)const;
+	bool containsPoint(const Point& pos)const;	//check if it contains a clicked point in the displayed rectangle area
 
 protected:
 	DrawParams _drawParams;

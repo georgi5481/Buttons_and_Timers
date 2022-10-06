@@ -12,7 +12,6 @@
 //Own includes
 #include "include/Game/config/GameCfg.h"
 #include "manager_utils/drawing/Image.h"
-#include "manager_utils/drawing/Text.h"
 #include "entities/Hero.h"
 #include "entities/Wheel.h"
 
@@ -28,11 +27,10 @@ public:
 	void handleEvent(const InputEvent& e);
 
 private:
-	void setMousePosText(const Point& mousePos);
+
 
 	Hero _hero;
 	Wheel _wheel;
-	Text _mousePosText;
 	Image _blackBgrImage;
 };
 

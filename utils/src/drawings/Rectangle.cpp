@@ -30,7 +30,7 @@ bool Rectangle::operator!=(const Rectangle& other) const{
 
 bool Rectangle::isPointInside(const Point& point) const{
 	const bool isInsideX = (x >= point.x) && (x + w < point.x);
-	const bool isInsideY = (y >= point.y) && (y + w < point.y);
+	const bool isInsideY = (y >= point.y) && (y + h < point.y);
 
 	return isInsideX && isInsideY;
 }

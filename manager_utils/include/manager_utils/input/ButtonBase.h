@@ -24,6 +24,8 @@ virtual ~ButtonBase() = default;	//since we have at least 1 pure virtual functio
 
 virtual void handleEvent(const InputEvent & e) = 0; //pure virtual member function
 
+void draw();
+
 void lockInput();
 
 void unlockInput();
