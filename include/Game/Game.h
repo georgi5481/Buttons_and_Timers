@@ -14,11 +14,12 @@
 #include "manager_utils/drawing/Image.h"
 #include "entities/Hero.h"
 #include "entities/Wheel.h"
+#include "proxies/GameProxy.h"
 
 //Forward Declaration
 struct InputEvent;
 
-class Game {
+class Game : public GameProxy{
 public:
 
 	int32_t init(const GameCfg& cfg);
@@ -28,6 +29,7 @@ public:
 
 private:
 
+	void onButtonPressed(int32_t buttonId) final;	//this is the final override of the function we inherited from GameProxy
 
 	Hero _hero;
 	Wheel _wheel;

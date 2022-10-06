@@ -54,3 +54,14 @@ void Game::handleEvent([[maybe_unused]]const InputEvent& e){
 	}
 
 }
+
+
+void Game::onButtonPressed(int32_t buttonId){
+
+	std::cout << "Button with Id " << buttonId << " was pressed." << std::endl;
+}
+
+
+
+
+

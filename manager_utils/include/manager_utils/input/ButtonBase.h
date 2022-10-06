@@ -35,6 +35,8 @@ bool isInputUnlocked() const;
 bool containsEvent(const InputEvent & e);
 
 private :
+
+
 	//	Rectangle _boundRect = Rectangle::ZERO;		//bound rectangle is the actual dimensions of the button. We can have bigger dimensions(transparrent) for better visual effect.
 		bool _isInputUnlocked = true;
 
