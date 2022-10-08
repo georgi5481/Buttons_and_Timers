@@ -8,6 +8,7 @@
 
 //Own includes
 #include "sdl_utils/InputEvent.h"
+#include "include/Game/proxies/GameProxy.h"
 
 int32_t WheelButton::init(GameProxy* gameProxy, int32_t buttonId){
 

@@ -19,7 +19,7 @@ enum ButtonStates{
 
 class ButtonBase : public Image {	//we inherit image so that we can use it's set and get members
 
-
+public:
 virtual ~ButtonBase() = default;	//since we have at least 1 pure virtual function we need to se the destructor to virtual
 
 virtual void handleEvent(const InputEvent & e) = 0; //pure virtual member function
