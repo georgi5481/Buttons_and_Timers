@@ -18,7 +18,9 @@
 
 class GameProxy{
 public:
-	virtual ~GameProxy() = default;			//ALWAYS add the default destructor when you have virtual function/s
+	virtual ~GameProxy() = default;			//ALWAYS add the virtual destructor when you have virtual function/s
+											//adding virtual to the destructor means it will create virtual destructor for the inherited class
+											//default means it will call the default destructor if you have inherritance
 	virtual void onButtonPressed(int32_t buttonId) = 0;		//when compiled this will dispatch to our inherited override method
 };
 
