@@ -12,7 +12,7 @@
 
 int32_t WheelButton::init(GameProxy* gameProxy, int32_t buttonId){
 
-	if(_gameProxy == nullptr){
+	if(gameProxy == nullptr){		//first we check the included pointer
 		std::cerr << "nullptr provided for gameProxy for ButtonId: " << buttonId << std::endl;
 		return EXIT_FAILURE;
 	}

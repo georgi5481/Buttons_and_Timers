@@ -1,5 +1,5 @@
 #ifndef COMMON_COMMONDEFINES_H_
-#define COMMON_COMMONDEFINES_H_
+#define COMMON_COMMONDEFINES_H_		//this is where we define our objects we want to include in our game
 
 //C system includes
 
@@ -10,19 +10,21 @@
 
 //Own includes
 
-namespace TextureId {
+namespace TextureId {	//we make a unique ID for every object we include later on
 
 	enum ResourceId {
 
 		RUNNING_GIRL,
 		WHEEL,
-		BLACK_BACKGROUND
+		BLACK_BACKGROUND,
+		START_BUTTON,
+		STOP_BUTTON
 	};
 
 
 }	//end of namespace TextureId
 
-namespace FontId{
+namespace FontId{		//same for the FontId
 
 	enum FontIdKeys{
 	ANGELINE_VINTAGE_40

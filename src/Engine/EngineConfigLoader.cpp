@@ -20,8 +20,12 @@ constexpr auto BLACK_BGR_WIDTH = 1920;
 constexpr auto BLACK_BGR_HEIGHT = 1080;
 
 constexpr auto RUNNING_GIRL_FRAMES = 6;
-constexpr auto RUNNING_GIRL_WIDTH = 256;			//here you can scale manually the pictures
+constexpr auto RUNNING_GIRL_WIDTH = 256;			//here you can scale manually the pictures or better set the right dimensions
 constexpr auto RUNNING_GIRL_HEIGHT = 220;
+
+constexpr auto BUTTON_FRAMES = 3;
+constexpr auto BUTTON_WIDTH = 150;
+constexpr auto BUTTON_HEIGHT = 50;
 
 constexpr auto WHEEL_IMG_WIDTH_HEIGHT = 695;
 
@@ -52,6 +56,33 @@ static void populateImageContainerConfig(ImageContainerCfg& cfg){
 	cfg.imageConfigs.emplace(TextureId::RUNNING_GIRL,imageCfg);	//we have to pair them first with the ID
 
 	imageCfg.frames.clear();	//clear the config and start implementing it again for the next image
+
+
+	constexpr auto buttonCount = 2;
+	const std::string buttonsPath[buttonCount]{
+		"resources/buttons/button_start.png",
+		"resources/buttons/button_stop.png"
+	};
+
+	constexpr int32_t buttonRsrcIds[buttonCount] = {
+			TextureId::START_BUTTON, TextureId::STOP_BUTTON
+	};
+	for(int32_t i = 0; i < buttonCount; ++i){
+		imageCfg.location = getFilePath(buttonsPath[i]);
+		for(auto frameId = 0; frameId < BUTTON_FRAMES; ++frameId){
+			imageCfg.frames.emplace_back(frameId * BUTTON_WIDTH,	//x	of the rectangle to visualise
+											0,						//y of the rectangle to visualise
+											BUTTON_WIDTH,		//width
+											BUTTON_HEIGHT);	//height
+		}
+
+		cfg.imageConfigs.emplace(buttonRsrcIds[i],imageCfg);	//we have to pair them first with the ID
+
+		imageCfg.frames.clear();	//clear the config and start implementing it again for the next image
+
+	}
+
+
 
 	imageCfg.location = getFilePath("resources/pictures/wheel.png");
 

@@ -19,7 +19,7 @@ public:
 
 	EngineConfigLoader() = delete;
 
-	~EngineConfigLoader() = default;
+	~EngineConfigLoader() = delete;
 
 	static EngineConfig loadConfig();
 };
