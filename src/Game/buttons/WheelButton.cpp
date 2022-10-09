@@ -24,10 +24,10 @@ _buttonId = buttonId;
 
 
 void WheelButton::handleEvent(const InputEvent &e){		//overriding the method
-	if(e.type == TouchEvent::KEYBOARD_PRESS){
+	if(e.type == TouchEvent::TOUCH_PRESS){
 		setFrame(CLICKED);
 	}
-	else if(e.type == TouchEvent::KEYBOARD_RELEASE){
+	else if(e.type == TouchEvent::TOUCH_RELEASE){
 		setFrame(UNCLICKED);
 		_gameProxy->onButtonPressed(_buttonId);
 	}
