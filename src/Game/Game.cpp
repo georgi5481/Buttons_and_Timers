@@ -23,6 +23,12 @@ int32_t Game::init(const GameCfg& cfg){
 	}
 
 	for(int32_t i = 0;  i < WHEEL_BTNS_COUNT; i++){
+		//since our first argument is and instance of gameProxy object, but we inherrit it on Game class
+		//we will use 'this' pointer and it will downcast it to gameProxy
+		if(EXIT_SUCCESS != _wheelBtns[i].init(this, i)){
+			std::cerr << "_wheelBtns[" << i << "].init() faile" << std::endl;
+			return EXIT_FAILURE;
+		}
 
 	}
 
@@ -39,6 +45,12 @@ void Game::deinit(){
 }
 
 void Game::draw(){
+
+	for(int32_t i = 0;  i < WHEEL_BTNS_COUNT; i++){
+		_wheelBtns[i].draw();
+
+	}
+
 	_wheel.draw();
 	_hero.draw();
 
