@@ -21,6 +21,11 @@ int32_t Game::init(const GameCfg& cfg){
 	if(EXIT_SUCCESS != _wheel.init(cfg.wheelRsrcId)){
 		return EXIT_FAILURE;
 	}
+
+	for(int32_t i = 0;  i < WHEEL_BTNS_COUNT; i++){
+
+	}
+
 	_blackBgrImage.create(cfg.blackBgrImage);
 	_blackBgrImage.activateAlphaModulation();
 	_blackBgrImage.setOpacity(ZERO_OPACITY);

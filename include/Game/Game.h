@@ -15,6 +15,7 @@
 #include "entities/Hero.h"
 #include "entities/Wheel.h"
 #include "proxies/GameProxy.h"
+#include "include/Game/buttons/WheelButton.h"
 
 //Forward Declaration
 struct InputEvent;
@@ -31,9 +32,16 @@ private:
 
 	void onButtonPressed(int32_t buttonId) final;	//this is the final override of the function we inherited from GameProxy
 
+	enum Internals {
+		WHEEL_START_BTN_IDX,
+		WHEEL_STOP_BTN_IDX,
+		WHEEL_BTNS_COUNT
+	};
+
 	Hero _hero;
 	Wheel _wheel;
 	Image _blackBgrImage;
+	WheelButton _wheelBtns[WHEEL_BTNS_COUNT];
 };
 
 #endif /* GAME_GAME_H_ */
