@@ -47,6 +47,8 @@ int32_t Game::init(const GameCfg& cfg){
 	_blackBgrImage.setOpacity(ZERO_OPACITY);
 
 
+	_wheelBtns[WHEEL_STOP_BTN_IDX].lockInput();
+
 	return EXIT_SUCCESS;
 }
 
@@ -97,7 +99,20 @@ void Game::handleEvent(const InputEvent& e){
 
 void Game::onButtonPressed(int32_t buttonId){
 
-	std::cout << "Button with Id " << buttonId << " was pressed." << std::endl;
+	switch(buttonId){
+	case WHEEL_START_BTN_IDX:
+		_wheelBtns[WHEEL_START_BTN_IDX].lockInput();	//if we pressed the button we lock it to do something.
+		_wheelBtns[WHEEL_STOP_BTN_IDX].unlockInput();
+		break;
+	case WHEEL_STOP_BTN_IDX:
+		_wheelBtns[WHEEL_START_BTN_IDX].unlockInput();	//the same logic(backwards) for the stop button on the display
+		_wheelBtns[WHEEL_STOP_BTN_IDX].lockInput();
+
+		break;
+	default:
+		std::cerr << "Received unsuported buttonId: " << buttonId << std::endl;
+		break;
+}
 }
 
 
