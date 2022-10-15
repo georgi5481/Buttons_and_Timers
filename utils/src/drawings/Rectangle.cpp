@@ -29,7 +29,7 @@ bool Rectangle::operator!=(const Rectangle& other) const{
 }
 
 bool Rectangle::isPointInside(const Point& point) const{
-	const bool isInsideX = (point.x >= x) && (point.x < (x + w));
+	const bool isInsideX = (point.x >= x) && (point.x < (x + w));		//if we are in the range of the rectangle provided
 	const bool isInsideY = (point.y >= y) && (point.y < (y + h));
 
 	return isInsideX && isInsideY;

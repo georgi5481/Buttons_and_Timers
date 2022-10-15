@@ -53,10 +53,10 @@ void Image::destroy(){
 
 void Image::setFrame(int32_t frameIdx){
 
-	if( 0 < frameIdx || frameIdx >= _maxFrames ){ //good practice is to check if the index is not negative
+	if( 0 > frameIdx || frameIdx >= _maxFrames ){ //good practice is to check if the index is not negative
 													//and it is in range of the maximum number
 		std::cerr << "Error, trying to set invalid frameIdx: " << frameIdx <<
-				"for Image with rsrcId: " << _drawParams.rsrcId << std::endl;
+				" for Image with rsrcId: " << _drawParams.rsrcId << std::endl;
 		return;
 	}
 
