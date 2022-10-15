@@ -27,7 +27,7 @@ int32_t Game::init(const GameCfg& cfg){
 			cfg.startButtonRsrcId, cfg.stopButtonRsrcId
 	};
 	const Point buttonStartPos[WHEEL_BTNS_COUNT] = {
-			Point(500, 100), Point(680,100)
+			Point(650, 100), Point(830,100)
 	};
 
 	for(int32_t i = 0;  i < WHEEL_BTNS_COUNT; i++){
@@ -56,20 +56,32 @@ void Game::deinit(){
 
 void Game::draw(){
 
-	for(int32_t i = 0;  i < WHEEL_BTNS_COUNT; i++){
-		_wheelBtns[i].draw();
-
-	}
-
 	_wheel.draw();
 	_hero.draw();
+
+	for(int32_t i = 0;  i < WHEEL_BTNS_COUNT; i++){
+		_wheelBtns[i].draw();
+	}
 
 	_blackBgrImage.draw();	//want to draw it lastly
 }
 
-void Game::handleEvent([[maybe_unused]]const InputEvent& e){
-	_wheel.handleEvent(e);
+void Game::handleEvent(const InputEvent& e){
+
+	for(int32_t i = 0;  i < WHEEL_BTNS_COUNT; ++i){
+
+		//first we check if the button is unlocked for pressing and does the click happened inside the area
+		if(_wheelBtns[i].isInputUnlocked() && _wheelBtns[i].containsEvent(e)){
+			_wheelBtns[i].handleEvent(e);
+			return;
+		}
+
+
+	}
+
 	_hero.handleEvent(e);
+	_wheel.handleEvent(e);
+
 
 	if(TouchEvent::KEYBOARD_RELEASE != e.type){	//if we don't touch with the mouse - do nothing
 			if(Keyboard::KEY_NUMPAD_1 == e.key){

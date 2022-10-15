@@ -17,6 +17,10 @@ enum{
 	MANAGERS_COUNT
 };
 
+
+
+//since we are declaring Singleton - we are making a class with forbidden copy,assingnment,init constructors and only 2 pure virtual methods that point at nullptr
+//But since we inherrit it - the two pure virtual pointers will point at the overriten methods in the inherited class. This way we create single global instance of this class.
 class MgrBase {
 public:
 
