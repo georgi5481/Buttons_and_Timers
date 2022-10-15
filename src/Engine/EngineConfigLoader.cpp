@@ -38,7 +38,7 @@ static std::string getFilePath(const std::string& relativePath){
 #ifdef RELEASE_BUILD
 	return relativePath;
 #else
-	return "../" + relativePath;
+	return /*"../" +*/ relativePath;
 #endif
 }
 
@@ -60,8 +60,8 @@ static void populateImageContainerConfig(ImageContainerCfg& cfg){
 
 	constexpr auto buttonCount = 2;
 	const std::string buttonsPath[buttonCount]{
-		getFilePath("resources/pictures/buttons/button_start.png"),
-		getFilePath("resources/pictures/buttons/button_stop.png")
+		"resources/pictures/buttons/button_start.png",	//we intentionally do not call the getFilePath function. We call it down bellow
+		"resources/pictures/buttons/button_stop.png"
 	};
 
 	constexpr int32_t buttonRsrcIds[buttonCount] = {
