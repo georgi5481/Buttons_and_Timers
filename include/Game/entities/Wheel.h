@@ -19,6 +19,9 @@ public:
 	//void deinit(); //no need to deinit cuz it will call the destructor of Image
 	void draw();
 	void handleEvent(const InputEvent& e);
+
+	void startAnimation();
+	void stopAnimation();
 private:
 
 	Image _wheelImg;
