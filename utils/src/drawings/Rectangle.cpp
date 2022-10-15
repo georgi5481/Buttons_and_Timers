@@ -29,8 +29,8 @@ bool Rectangle::operator!=(const Rectangle& other) const{
 }
 
 bool Rectangle::isPointInside(const Point& point) const{
-	const bool isInsideX = (x >= point.x) && (x + w < point.x);
-	const bool isInsideY = (y >= point.y) && (y + h < point.y);
+	const bool isInsideX = (point.x >= x) && (point.x < (x + w));
+	const bool isInsideY = (point.y >= y) && (point.y < (y + h));
 
 	return isInsideX && isInsideY;
 }
