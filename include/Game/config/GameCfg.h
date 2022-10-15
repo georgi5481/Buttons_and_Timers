@@ -17,6 +17,9 @@ struct GameCfg {
 	int32_t wheelRsrcId;
 	int32_t blackBgrImage;
 
+	int32_t startButtonRsrcId;
+	int32_t stopButtonRsrcId;
+
 	int32_t textFontId;
 };
 

@@ -60,8 +60,8 @@ static void populateImageContainerConfig(ImageContainerCfg& cfg){
 
 	constexpr auto buttonCount = 2;
 	const std::string buttonsPath[buttonCount]{
-		"resources/buttons/button_start.png",
-		"resources/buttons/button_stop.png"
+		getFilePath("resources/pictures/buttons/button_start.png"),
+		getFilePath("resources/pictures/buttons/button_stop.png")
 	};
 
 	constexpr int32_t buttonRsrcIds[buttonCount] = {
@@ -147,7 +147,13 @@ static void populateGameConfig(GameCfg& cfg){
 	cfg.runningGirlRsrcId = TextureId::RUNNING_GIRL;
 	cfg.wheelRsrcId = TextureId::WHEEL;
 	cfg.blackBgrImage = TextureId::BLACK_BACKGROUND;
+
+	cfg.startButtonRsrcId = TextureId::START_BUTTON;
+	cfg.stopButtonRsrcId = TextureId::STOP_BUTTON;
+
 	cfg.textFontId = FontId::ANGELINE_VINTAGE_40;	//place unique key for our flyweight design pattern
+
+
 }
 
 

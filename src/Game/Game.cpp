@@ -22,14 +22,24 @@ int32_t Game::init(const GameCfg& cfg){
 		return EXIT_FAILURE;
 	}
 
+
+	const int32_t buttonRsrcIds[WHEEL_BTNS_COUNT] = {
+			cfg.startButtonRsrcId, cfg.stopButtonRsrcId
+	};
+	const Point buttonStartPos[WHEEL_BTNS_COUNT] = {
+			Point(500, 100), Point(680,100)
+	};
+
 	for(int32_t i = 0;  i < WHEEL_BTNS_COUNT; i++){
+
+		//in init method down bellow-
 		//since our first argument is and instance of gameProxy object, but we inherrit it on Game class
 		//we will use 'this' pointer and it will downcast it to gameProxy
 		if(EXIT_SUCCESS != _wheelBtns[i].init(this, i)){
-			std::cerr << "_wheelBtns[" << i << "].init() faile" << std::endl;
+			std::cerr << "_wheelBtns[" << i << "].init() failed." << std::endl;
 			return EXIT_FAILURE;
 		}
-
+		_wheelBtns[i].create(buttonRsrcIds[i], buttonStartPos[i]);
 	}
 
 	_blackBgrImage.create(cfg.blackBgrImage);
