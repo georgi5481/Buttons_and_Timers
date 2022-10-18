@@ -103,11 +103,12 @@ void Game::onButtonPressed(int32_t buttonId){
 	case WHEEL_START_BTN_IDX:
 		_wheelBtns[WHEEL_START_BTN_IDX].lockInput();	//if we pressed the button we lock it to do something.
 		_wheelBtns[WHEEL_STOP_BTN_IDX].unlockInput();
+		_wheel.startAnimation();
 		break;
 	case WHEEL_STOP_BTN_IDX:
 		_wheelBtns[WHEEL_START_BTN_IDX].unlockInput();	//the same logic(backwards) for the stop button on the display
 		_wheelBtns[WHEEL_STOP_BTN_IDX].lockInput();
-
+		_wheel.stopAnimation();
 		break;
 	default:
 		std::cerr << "Received unsuported buttonId: " << buttonId << std::endl;

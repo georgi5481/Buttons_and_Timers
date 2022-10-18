@@ -23,7 +23,7 @@ public:
 	void startAnimation();
 	void stopAnimation();
 private:
-
+	bool _isAnimationActive = false;
 	Image _wheelImg;
 };
 

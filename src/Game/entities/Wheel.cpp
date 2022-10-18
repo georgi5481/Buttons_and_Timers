@@ -4,6 +4,7 @@
 
 //C++ system includes
 #include<cstdint>
+#include<iostream>
 #include<stdlib.h>
 //3rd-party includes
 
@@ -53,4 +54,24 @@ void Wheel::handleEvent(const InputEvent& e){
 	default:
 		break;
 	}
+}
+
+void Wheel::startAnimation(){
+	if(_isAnimationActive){
+		std::cerr << "Wheel animation is already active " << std::endl;
+		return;
+	}
+	_isAnimationActive = true;
+	std::cerr << "Wheel animation started " << std::endl;
+}
+
+void Wheel::stopAnimation(){
+	if(!_isAnimationActive){
+		std::cerr << "Wheel animation was not active in the first place. " << std::endl;
+		return;
+	}
+
+	_isAnimationActive = false;
+	std::cerr << "Wheel animation stoped. " << std::endl;
+
 }
