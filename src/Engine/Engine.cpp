@@ -86,7 +86,7 @@ void Engine::drawFrame(){
 
 bool Engine::processFrame(){
 
-	_managerHandler.process();	//calls our managers process method
+	_managerHandler.process();	//calls our managers process methods
 	_game.process();
 
 	while(_event.pollEvent()){
