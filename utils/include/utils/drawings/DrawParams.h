@@ -20,6 +20,7 @@
 inline constexpr auto INVALID_RSRC_ID = -1;
 inline constexpr auto FULL_OPACITY = 255;
 inline constexpr auto ZERO_OPACITY = 0;
+inline constexpr auto FULL_ROTATION = 360;
 
 enum class WidgetFlip : uint8_t{	//basically an enum that has uint8_t bits long variables
 	NONE,

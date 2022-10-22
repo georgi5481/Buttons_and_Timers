@@ -49,9 +49,16 @@ double Widget::getRotation()const{
 
 void Widget::rotateRight(double delta){
 	_drawParams.rotationAngle += delta;
+
+	while(_drawParams.rotationAngle> FULL_ROTATION){
+		_drawParams.rotationAngle -= FULL_ROTATION;
+	}
 }
 void Widget::rotateLeft(double delta){
 	_drawParams.rotationAngle -= delta;
+	while(_drawParams.rotationAngle < FULL_ROTATION){
+			_drawParams.rotationAngle += FULL_ROTATION;
+		}
 }
 
 int32_t Widget::getWidth() const{

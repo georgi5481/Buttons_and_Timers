@@ -96,6 +96,9 @@ void Game::handleEvent(const InputEvent& e){
 
 }
 
+void Game::process(){
+_wheel.process();
+}
 
 void Game::onButtonPressed(int32_t buttonId){
 

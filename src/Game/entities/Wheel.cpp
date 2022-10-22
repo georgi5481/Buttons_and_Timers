@@ -16,6 +16,12 @@ int32_t Wheel::init(int32_t wheelRsrcId){
 
 	_wheelImg.create(wheelRsrcId);
 
+	Point rotCenter(_wheelImg.getWidth(), _wheelImg.getHeight());
+	rotCenter.x /=2;
+	rotCenter.y /=2;
+
+	_wheelImg.setRotationPoint(rotCenter);
+
 	return EXIT_SUCCESS;
 
 }
@@ -74,4 +80,11 @@ void Wheel::stopAnimation(){
 	_isAnimationActive = false;
 	std::cerr << "Wheel animation stoped. " << std::endl;
 
+}
+
+void Wheel::process(){
+	if(!_isAnimationActive){
+		return;
+	}
+	_wheelImg.rotateRight(2);
 }

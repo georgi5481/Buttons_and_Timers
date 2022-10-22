@@ -28,6 +28,7 @@ public:
 	void draw();
 	void handleEvent(const InputEvent& e);
 
+	void process();
 private:
 
 	void onButtonPressed(int32_t buttonId) final;	//this is the final override of the function we inherited from GameProxy

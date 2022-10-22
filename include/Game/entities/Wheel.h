@@ -22,6 +22,8 @@ public:
 
 	void startAnimation();
 	void stopAnimation();
+
+	void process();
 private:
 	bool _isAnimationActive = false;
 	Image _wheelImg;

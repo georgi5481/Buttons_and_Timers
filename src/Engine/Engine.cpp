@@ -85,6 +85,10 @@ void Engine::drawFrame(){
 
 
 bool Engine::processFrame(){
+
+	_managerHandler.process();	//calls our managers process method
+	_game.process();
+
 	while(_event.pollEvent()){
 		if(_event.checkForExitRequiest()){
 			return true;
