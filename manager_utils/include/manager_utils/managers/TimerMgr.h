@@ -8,13 +8,14 @@
 //3rd-party includes
 
 //Own includes
-
+#include "MgrBase.h"
 //Forward Declaration
 
-class TimerMgr{
-	TimerMgr();
-	~TimerMgr();
+class TimerMgr : public MgrBase {
 
+	Time _elapsedTime;
+	std::map<int32_t, TimerData> _timerMap;
+	std::set<int32_t> _removeTimerSet;
 
 };
 
