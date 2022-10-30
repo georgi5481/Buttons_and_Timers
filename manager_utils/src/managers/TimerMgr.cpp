@@ -7,6 +7,6 @@
 //3rd-party includes
 
 //Own includes
-
+extern TimerMgr* gTimerMgr = nullptr;
 
 

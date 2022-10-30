@@ -12,11 +12,12 @@
 #include "manager_utils/config/ManagerHandlerCfg.h"
 #include "manager_utils/managers/DrawMgr.h"
 #include "manager_utils/managers/RsrcMgr.h"
-
+#include "manager_utils/managers/TimerMgr.h"
 
 
 int32_t ManagerHandler::init(const ManagerHandlerCfg& cfg){
 
+		//DRAW MANAGER INITIALIZATION
 	gDrawMgr = new DrawMgr();
 
 	if(gDrawMgr == nullptr) {
@@ -29,7 +30,7 @@ int32_t ManagerHandler::init(const ManagerHandlerCfg& cfg){
 	}
 
 
-
+		//RESOURCE MANAGER INITIALIZATION
 	gRsrcMgr = new RsrcMgr();
 
 	if(gRsrcMgr == nullptr) {
@@ -40,6 +41,22 @@ int32_t ManagerHandler::init(const ManagerHandlerCfg& cfg){
 			std::cerr << "gRsrcMgr init() failed. Reason: " << std::endl;
 			return EXIT_FAILURE;
 	}
+
+
+		//TIMER MANAGER INITIALIZATION
+	gTimerMgr = new TimerMgr();
+
+	if(gTimerMgr == nullptr) {
+		std::cerr << "Error, bad alloc for TimerMgr" << std::endl;
+			return EXIT_FAILURE;
+	}
+	if (EXIT_SUCCESS != gTimerMgr->init(cfg.rsrcMgrCfg)){
+			std::cerr << "gTimerMgr init() failed. Reason: " << std::endl;
+			return EXIT_FAILURE;
+	}
+
+
+
 
 		//downcasting pointers to MgrBase cuz the deinit method isn't pure virtual
 	_managers[DRAW_MGR_IDX] = static_cast<MgrBase*>(gDrawMgr);
