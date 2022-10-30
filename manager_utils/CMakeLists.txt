@@ -23,7 +23,7 @@ add_library(
 	${_INC_DIR}/drawing/Text.h	
 	${_INC_DIR}/input/ButtonBase.h	
 	${_INC_DIR}/time/TimerData.h
-	
+	${_INC_DIR}/time/TimerClient.h
 	
 	${_SRC_DIR}/input/ButtonBase.cpp	
 	${_SRC_DIR}/drawing/Text.cpp
@@ -33,6 +33,7 @@ add_library(
 	${_SRC_DIR}/managers/RsrcMgr.cpp
 	${_SRC_DIR}/managers/TimerMgr.cpp
 	${_SRC_DIR}/managers/ManagerHandler.cpp	
+	${_SRC_DIR}/time/TimerClient.cpp
 	
 )
 
