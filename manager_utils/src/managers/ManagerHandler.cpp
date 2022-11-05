@@ -50,7 +50,7 @@ int32_t ManagerHandler::init(const ManagerHandlerCfg& cfg){
 		std::cerr << "Error, bad alloc for TimerMgr" << std::endl;
 			return EXIT_FAILURE;
 	}
-	if (EXIT_SUCCESS != gTimerMgr->init(cfg.rsrcMgrCfg)){
+	if (EXIT_SUCCESS != gTimerMgr->init()){
 			std::cerr << "gTimerMgr init() failed. Reason: " << std::endl;
 			return EXIT_FAILURE;
 	}
@@ -58,14 +58,18 @@ int32_t ManagerHandler::init(const ManagerHandlerCfg& cfg){
 
 
 
-		//downcasting pointers to MgrBase cuz the deinit method isn't pure virtual
+		//downcasting pointers to MgrBase so that later on when we call the virtual deinit method
+		//it will call their base deinit methods
 	_managers[DRAW_MGR_IDX] = static_cast<MgrBase*>(gDrawMgr);
 	_managers[RSRC_MGR_IDX] = static_cast<MgrBase*>(gRsrcMgr);
+	_managers[TIMER_MGR_IDX] = static_cast<MgrBase*>(gTimerMgr);
 	return EXIT_SUCCESS;
 }
 
 
 void ManagerHandler::deinit(){
+
+	//we use polymorpfic deinit methods
 	for(int32_t i = MANAGERS_COUNT -1; i >= 0 ; i--){		//we have to deinitialise backwards
 		_managers[i]->deinit();
 		_managers[i] = nullptr;
@@ -73,6 +77,7 @@ void ManagerHandler::deinit(){
 }
 
 void ManagerHandler::process(){
+	//we use polymorpfic process methods
 	for(int32_t i = 0; i < MANAGERS_COUNT; ++i){		//caling the proces vitual function
 		_managers[i]->process();						//that will override with the correct process method
 	}
@@ -88,6 +93,10 @@ void ManagerHandler::nullifyGlobalMgr(int32_t mgrIdx){
 	case RSRC_MGR_IDX:
 		delete gRsrcMgr;
 		gRsrcMgr = nullptr;
+		break;
+	case TIMER_MGR_IDX:
+		delete gRsrcMgr;
+		gTimerMgr = nullptr;
 		break;
 	default:
 		std::cerr << "Received invalid mgrIdx: " << mgrIdx << std::endl;

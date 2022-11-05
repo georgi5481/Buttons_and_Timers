@@ -25,7 +25,7 @@ public:
 						TimerType timerType);
 	void stopTimer(int32_t timerId);
 	void detachTimerClient (int32_t timerId);
-	//void isActiveTimerId(int32_t timerId) const;
+	void isActiveTimerId(int32_t timerId) const;
 	void onInitEnd(); //Really important method
 
 private:

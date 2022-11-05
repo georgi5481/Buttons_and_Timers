@@ -22,9 +22,11 @@ int64_t Time::toSeconds() const {
 }				/*first we take off (now time - elapsed call)
 				  so that we can get the time space between them
 
-				  second we cast this time into what we want(seconds, micro/macro/nano seconds etc.)
+				  second we call the method count()
 
-				  and third we call the method count()*/
+
+				  and third when we call this function we can cast this time segment
+				  into what we want(seconds, micro/macro/nano seconds etc.)*/
 
 
 int64_t Time::toMilliseconds() const{
