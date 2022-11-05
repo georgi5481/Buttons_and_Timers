@@ -31,6 +31,8 @@ public:
 private:
 	void removeTimersInternal();
 
+	void onTimerTimeout(int32_t timerId, TimerData& timer);
+
 	Time _elapsedTime;
 	std::map<int32_t, TimerData> _timerMap;		//we separate them in order not to trigger double removals
 	std::set<int32_t> _removeTimerSet;		//we place in the set first what to clear in the _timerMap

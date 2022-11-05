@@ -25,9 +25,13 @@ void TimerMgr::process() {
 const int64_t msElapsed = _elapsedTime.getElapsed().toMilliseconds();
 
 	for(auto it = _timerMap.begin(); it != _timerMap.end(); ++it){
+
+		const int32_t timerId = it->first;
+		TimerData& timerData = it->second;
+
 		it->second.remaining -= msElapsed;
 		if(0 > it->second.remaining){
-			onTimerTimeout(it->first, it->second);
+			onTimerTimeout(timerId, timerData);
 		}
 
 	}
@@ -70,6 +74,14 @@ void TimerMgr::removeTimersInternal(){
 	//clear the removeTimerSet
 	_removeTimerSet.clear();
 
+}
+
+void TimerMgr::onTimerTimeout(int32_t timerId, TimerData& timer){
+
+	if(TimerType::ONESHOT == timer.timerType) {
+		return;
+	}
+	timer.remaining += timer.interval ;
 }
 
 
