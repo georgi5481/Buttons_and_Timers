@@ -25,13 +25,15 @@ public:
 						TimerType timerType);
 	void stopTimer(int32_t timerId);
 	void detachTimerClient (int32_t timerId);
-	void isActiveTimerId(int32_t timerId) const;
+	bool isActiveTimerId(int32_t timerId) const;
 	void onInitEnd(); //Really important method
 
 private:
+	void removeTimersInternal();
+
 	Time _elapsedTime;
-	std::map<int32_t, TimerData> _timerMap;
-	std::set<int32_t> _removeTimerSet;
+	std::map<int32_t, TimerData> _timerMap;		//we separate them in order not to trigger double removals
+	std::set<int32_t> _removeTimerSet;		//we place in the set first what to clear in the _timerMap
 };
 
 extern TimerMgr* gTimerMgr; //we will create only one instance of this class

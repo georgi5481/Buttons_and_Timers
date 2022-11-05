@@ -47,11 +47,28 @@ void TimerMgr::detachTimerClient (int32_t timerId){
 
 }
 
-void TimerMgr::isActiveTimerId(int32_t timerId) const{
-
+bool TimerMgr::isActiveTimerId(int32_t timerId) const{
+/* if we don't find it in the set
+ * and we find it in the timerMap
+ * then it is active*/
+	return (_removeTimerSet.end() == _removeTimerSet.find(timerId))
+		&& (_timerMap.end() != _timerMap.find(timerId));
 }
 
 void TimerMgr::onInitEnd(){
+
+}
+
+void TimerMgr::removeTimersInternal(){
+	for(const int32_t timerId : _removeTimerSet){
+		auto mapIt = _timerMap.find(timerId);
+		if(mapIt != _timerMap.end()) {
+			_timerMap.erase(mapIt);
+		}
+	}
+
+	//clear the removeTimerSet
+	_removeTimerSet.clear();
 
 }
 

@@ -14,7 +14,7 @@
 
 
 //Forward Declaration
-struct TimerClient;	//timer clien
+struct TimerClient;	//timer client
 
 enum class TimerType : uint8_t {
 	ONESHOT,
