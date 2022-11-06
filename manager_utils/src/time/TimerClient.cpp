@@ -17,6 +17,7 @@ void TimerClient::startTimer( int64_t interval, int32_t timerId,	TimerType timer
 		std::cerr << "Timer with id: " << timerId << " requested interval: "
 				<< interval << ", which is lower than the minimum one: "
 				<< minTimerInterval << std::endl;
+		return;
 	}
 	const TimerData data(interval,interval, this, timerType);	//creating new object
 	gTimerMgr->startTimer(timerId, data);

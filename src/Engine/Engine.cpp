@@ -9,7 +9,7 @@
 //own includes
 #include "include/Engine/config/EngineConfig.h"
 #include "manager_utils/managers/DrawMgr.h"
-
+#include "manager_utils/managers/TimerMgr.h"
 
 #include "utils/thread/ThreadUtils.h"
 #include "utils/Time/Time.h"
@@ -37,6 +37,8 @@ int32_t Engine::init(const EngineConfig& cfg){
 			return EXIT_FAILURE;
 	}
 
+
+	gTimerMgr->onInitEnd();	//we start the timer at the end of initialisation
 
 return EXIT_SUCCESS;
 }

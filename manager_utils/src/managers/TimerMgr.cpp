@@ -8,7 +8,7 @@
 
 //Own includes
 #include "manager_utils/time/TimerClient.h"
-extern TimerMgr* gTimerMgr = nullptr;
+TimerMgr* gTimerMgr = nullptr;
 
 
 int32_t TimerMgr::init(){
@@ -58,9 +58,9 @@ void TimerMgr::stopTimer(int32_t timerId){
 	_removeTimerSet.insert(timerId);
 }
 
-void TimerMgr::detachTimerClient (int32_t timerId){
+/*void TimerMgr::detachTimerClient (int32_t timerId){
 
-}
+}*/
 
 bool TimerMgr::isActiveTimerId(int32_t timerId) const{
 /* if we don't find it in the set
@@ -71,7 +71,7 @@ bool TimerMgr::isActiveTimerId(int32_t timerId) const{
 }
 
 void TimerMgr::onInitEnd(){
-
+	_elapsedTime.getElapsed();
 }
 
 void TimerMgr::removeTimersInternal(){
