@@ -12,7 +12,7 @@
 #include "sdl_utils/InputEvent.h"
 
 
-int32_t Wheel::init(int32_t wheelRsrcId){
+int32_t Wheel::init(int32_t wheelRsrcId, int32_t rotateAnimTimerId){
 
 	_wheelImg.create(wheelRsrcId);
 
@@ -83,8 +83,21 @@ void Wheel::stopAnimation(){
 }
 
 void Wheel::process(){
-	if(!_isAnimationActive){
+	/*if(!_isAnimationActive){
 		return;
 	}
-	_wheelImg.rotateRight(2);
+	_wheelImg.rotateRight(2);*/
 }
+
+
+void Wheel::onTimeout(int32_t timerId){
+	if(timerId == rotateAnimTimerId){
+
+	}
+	else{
+
+	}
+
+}
+
+

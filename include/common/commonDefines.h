@@ -32,5 +32,12 @@ namespace FontId{		//same for the FontId
 
 } //end of namespace FontIdKeys
 
+namespace TimerId{	//unique timers
+
+	enum Keys {
+		WHEEL_ROT_ANIM_TIMER_ID
+	};
+}//end of namespace TimerId
+
 
 #endif /* COMMON_COMMONDEFINES_H_ */

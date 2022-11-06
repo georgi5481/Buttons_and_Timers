@@ -21,6 +21,8 @@ struct GameCfg {
 	int32_t stopButtonRsrcId;
 
 	int32_t textFontId;
+
+	int32_t wheelRotAnimTimerId;
 };
 
 

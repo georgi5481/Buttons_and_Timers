@@ -18,7 +18,7 @@ int32_t Game::init(const GameCfg& cfg){
 		return EXIT_FAILURE;
 	}
 
-	if(EXIT_SUCCESS != _wheel.init(cfg.wheelRsrcId)){
+	if(EXIT_SUCCESS != _wheel.init(cfg.wheelRsrcId, cfg.wheelRotAnimTimerId)){
 		return EXIT_FAILURE;
 	}
 
@@ -96,9 +96,7 @@ void Game::handleEvent(const InputEvent& e){
 
 }
 
-void Game::process(){
-_wheel.process();
-}
+
 
 void Game::onButtonPressed(int32_t buttonId){
 
