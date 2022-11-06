@@ -7,6 +7,7 @@
 //3rd-party includes
 
 //Own includes
+#include "manager_utils/time/TimerClient.h"
 extern TimerMgr* gTimerMgr = nullptr;
 
 
@@ -38,13 +39,23 @@ const int64_t msElapsed = _elapsedTime.getElapsed().toMilliseconds();
 	removeTimersInternal();
 }
 
-void TimerMgr::startTimer(TimerClient *tcInstance, int64_t interval, int32_t timerId,
-					TimerType timerType){
+void TimerMgr::startTimer(int32_t timerId, const TimerData& data){
 
+	if(isActiveTimerId(timerId)){
+		std::cerr << "Error, trying to start an already existing timer with id: " << timerId << std::endl;
+	return;
+	}
+
+
+_timerMap.emplace(timerId,data);
 }
 
 void TimerMgr::stopTimer(int32_t timerId){
-
+	if(!isActiveTimerId(timerId)){
+		std::cerr << "Error, trying to stop a non existing timer with id: " << timerId << std::endl;
+	return;
+	}
+	_removeTimerSet.insert(timerId);
 }
 
 void TimerMgr::detachTimerClient (int32_t timerId){
@@ -79,8 +90,9 @@ void TimerMgr::removeTimersInternal(){
 void TimerMgr::onTimerTimeout(int32_t timerId, TimerData& timer){
 
 	if(TimerType::ONESHOT == timer.timerType) {
-		return;
+		_removeTimerSet.insert(timerId);
 	}
+	timer.tcInstance->onTimeout(timerId);
 	timer.remaining += timer.interval ;
 }
 

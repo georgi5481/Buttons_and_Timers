@@ -21,8 +21,7 @@ public:
 
 	void deinit() final;
 	void process() final;
-	void startTimer(TimerClient *tcInstance, int64_t interval, int32_t timerId,
-						TimerType timerType);
+	void startTimer(int32_t timerId, const TimerData& data);
 	void stopTimer(int32_t timerId);
 	void detachTimerClient (int32_t timerId);
 	bool isActiveTimerId(int32_t timerId) const;
@@ -34,6 +33,7 @@ private:
 	void onTimerTimeout(int32_t timerId, TimerData& timer);
 
 	Time _elapsedTime;
+				//a map where the timers are stored
 	std::map<int32_t, TimerData> _timerMap;		//we separate them in order not to trigger double removals
 	std::set<int32_t> _removeTimerSet;		//we place in the set first what to clear in the _timerMap
 };
