@@ -12,6 +12,12 @@
 #include "sdl_utils/InputEvent.h"
 
 
+Wheel::~Wheel(){
+	if(isActiveTimerId(_rotateAnimTimerId)) {
+		stopTimer(_rotateAnimTimerId);
+	}
+}
+
 int32_t Wheel::init(int32_t wheelRsrcId, int32_t rotateAnimTimerId){
 
 	_wheelImg.create(wheelRsrcId);
@@ -21,6 +27,8 @@ int32_t Wheel::init(int32_t wheelRsrcId, int32_t rotateAnimTimerId){
 	rotCenter.y /=2;
 
 	_wheelImg.setRotationPoint(rotCenter);
+
+	_rotateAnimTimerId = rotateAnimTimerId;
 
 	return EXIT_SUCCESS;
 
@@ -68,7 +76,7 @@ void Wheel::startAnimation(){
 		return;
 	}
 	_isAnimationActive = true;
-	std::cerr << "Wheel animation started " << std::endl;
+	startTimer(20, _rotateAnimTimerId, TimerType::PULSE);
 }
 
 void Wheel::stopAnimation(){
@@ -78,24 +86,22 @@ void Wheel::stopAnimation(){
 	}
 
 	_isAnimationActive = false;
-	std::cerr << "Wheel animation stoped. " << std::endl;
 
+	stopTimer(_rotateAnimTimerId);
 }
 
-void Wheel::process(){
-	/*if(!_isAnimationActive){
-		return;
-	}
-	_wheelImg.rotateRight(2);*/
+void Wheel::processRotAnim(){
+
+	_wheelImg.rotateRight(5);
 }
 
 
 void Wheel::onTimeout(int32_t timerId){
-	if(timerId == rotateAnimTimerId){
-
+	if(timerId == _rotateAnimTimerId){
+		processRotAnim();
 	}
 	else{
-
+			std::cerr << "Received id unsuported timerId: " << timerId << std::endl;
 	}
 
 }

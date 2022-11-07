@@ -22,8 +22,8 @@ void TimerMgr::deinit() {
 }
 
 void TimerMgr::process() {
-	//when we get the time segment that passed we convert it intoo miliseconds
-const int64_t msElapsed = _elapsedTime.getElapsed().toMilliseconds();
+	//when we get the time segment that passed we convert it into miliseconds
+	const int64_t msElapsed = _elapsedTime.getElapsed().toMilliseconds();
 
 	for(auto it = _timerMap.begin(); it != _timerMap.end(); ++it){
 
