@@ -23,6 +23,9 @@ struct GameCfg {
 	int32_t textFontId;
 
 	int32_t wheelRotAnimTimerId;
+	int32_t wheelScaleAnimTimerId;
+
+	int32_t moveGirlTimerId;
 };
 
 

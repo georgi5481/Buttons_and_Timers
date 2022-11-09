@@ -35,7 +35,9 @@ namespace FontId{		//same for the FontId
 namespace TimerId{	//unique timers
 
 	enum Keys {
-		WHEEL_ROT_ANIM_TIMER_ID
+		WHEEL_ROT_ANIM_TIMER_ID,
+		SCALE_WHEEL_TIMER_ID,
+		MOVE_GIRL_TIMER_ID
 	};
 }//end of namespace TimerId
 
