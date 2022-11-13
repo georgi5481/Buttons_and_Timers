@@ -22,11 +22,14 @@ public:
 	void deinit();	//no need cuz it will call the destructor of Image
 	void draw();
 	void handleEvent(const InputEvent& e);
-
+	void processMoveAnim();
 
 private:
+
+	void onTimeout(int32_t timerId) final;
+
 	Image _heroImg;
-	int32_t moveTimerId = -1;	//we set it to -1 cuz we have an element equal to 0
+	int32_t _moveTimerId = -1;	//we set it to -1 cuz we have an element equal to 0
 };
 
 

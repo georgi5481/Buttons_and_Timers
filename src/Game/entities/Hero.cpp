@@ -11,10 +11,12 @@
 #include "sdl_utils/InputEvent.h"
 
 
-int32_t Hero::init(int32_t heroRsrcId)
+int32_t Hero::init(int32_t heroRsrcId, int32_t moveTimerId)
 {
 	_heroImg.create(heroRsrcId, Point(0,0));
 
+
+	_moveTimerId = moveTimerId;
 return EXIT_SUCCESS;
 }
 
@@ -64,3 +66,20 @@ void Hero::handleEvent(const InputEvent& e){
 		break;
 	}
 }
+
+void Hero::onTimeout(int32_t timerId) {
+	if(timerId == _moveTimerId){
+		processMoveAnim();
+	}
+	else{
+			std::cerr << "Received id unsuported timerId: " << timerId << std::endl;
+	}
+}
+
+
+void Hero::processMoveAnim(){	//we want our hero to move
+
+
+}
+
+
