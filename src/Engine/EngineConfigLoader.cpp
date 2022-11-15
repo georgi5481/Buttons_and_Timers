@@ -154,6 +154,9 @@ static void populateGameConfig(GameCfg& cfg){
 	cfg.textFontId = FontId::ANGELINE_VINTAGE_40;	//place unique key for our flyweight design pattern
 
 	cfg.wheelRotAnimTimerId = TimerId::WHEEL_ROT_ANIM_TIMER_ID;
+	cfg.moveGirlTimerId = TimerId::MOVE_GIRL_TIMER_ID;
+	cfg.wheelScaleAnimTimerId = TimerId:: SCALE_WHEEL_TIMER_ID;
+
 }
 
 

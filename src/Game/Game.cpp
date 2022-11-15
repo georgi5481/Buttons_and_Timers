@@ -14,7 +14,7 @@
 
 int32_t Game::init(const GameCfg& cfg){
 
-	if(EXIT_SUCCESS != _hero.init(cfg.runningGirlRsrcId)){
+	if(EXIT_SUCCESS != _hero.init(cfg.runningGirlRsrcId, cfg.moveGirlTimerId)){
 		return EXIT_FAILURE;
 	}
 
@@ -105,6 +105,7 @@ void Game::onButtonPressed(int32_t buttonId){
 		_wheelBtns[WHEEL_START_BTN_IDX].lockInput();	//if we pressed the button we lock it to do something.
 		_wheelBtns[WHEEL_STOP_BTN_IDX].unlockInput();
 		_wheel.startAnimation();
+		_hero.startMoveAnim();
 		break;
 	case WHEEL_STOP_BTN_IDX:
 		_wheelBtns[WHEEL_START_BTN_IDX].unlockInput();	//the same logic(backwards) for the stop button on the display

@@ -24,12 +24,14 @@ public:
 	void handleEvent(const InputEvent& e);
 	void processMoveAnim();
 
+	void startMoveAnim();
 private:
 
 	void onTimeout(int32_t timerId) final;
 
 	Image _heroImg;
 	int32_t _moveTimerId = -1;	//we set it to -1 cuz we have an element equal to 0
+	int32_t moveSteps = 50;
 };
 
 

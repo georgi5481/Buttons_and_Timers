@@ -5,6 +5,7 @@
 //C++ system includes
 #include<cstdint>
 #include<stdlib.h>
+#include<iostream>
 //3rd-party includes
 
 //Own includes
@@ -28,6 +29,13 @@ void Hero::deinit(){	//no need for implementation. It will call the destructor o
 void Hero::draw(){
 _heroImg.draw();
 }
+
+
+void Hero::startMoveAnim(){
+	startTimer(50, _moveTimerId, TimerType::PULSE);
+}
+
+
 void Hero::handleEvent(const InputEvent& e){
 
 	if(TouchEvent::KEYBOARD_PRESS != e.type){
@@ -78,8 +86,14 @@ void Hero::onTimeout(int32_t timerId) {
 
 
 void Hero::processMoveAnim(){	//we want our hero to move
+	--moveSteps;
 
+	_heroImg.moveRight(5);
+	_heroImg.setNextFrame();
 
+	if(moveSteps == 0){
+		stopTimer(_moveTimerId);
+	}
 }
 
 
