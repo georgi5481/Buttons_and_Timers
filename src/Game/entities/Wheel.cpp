@@ -18,7 +18,7 @@ Wheel::~Wheel(){
 	}
 }
 
-int32_t Wheel::init(int32_t wheelRsrcId, int32_t rotateAnimTimerId){
+int32_t Wheel::init(int32_t wheelRsrcId, int32_t rotateAnimTimerId, int32_t scaleAnimationTimeId){
 
 	_wheelImg.create(wheelRsrcId);
 
@@ -30,6 +30,7 @@ int32_t Wheel::init(int32_t wheelRsrcId, int32_t rotateAnimTimerId){
 
 	_rotateAnimTimerId = rotateAnimTimerId;
 
+	_scaleAnimationTimeId = scaleAnimationTimeId;
 	return EXIT_SUCCESS;
 
 }
