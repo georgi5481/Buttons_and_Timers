@@ -18,7 +18,7 @@ int32_t Game::init(const GameCfg& cfg){
 		return EXIT_FAILURE;
 	}
 
-	if(EXIT_SUCCESS != _wheel.init(cfg.wheelRsrcId, cfg.wheelRotAnimTimerId)){
+	if(EXIT_SUCCESS != _wheel.init(cfg.wheelRsrcId, cfg.wheelRotAnimTimerId, cfg.wheelScaleAnimTimerId)){
 		return EXIT_FAILURE;
 	}
 

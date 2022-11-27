@@ -30,11 +30,15 @@ public:
 private:
 	void onTimeout(int32_t timerId) final;
 	void processRotAnim();
+	void processScaleAnim();
 
 	bool _isAnimationActive = false;
 	Image _wheelImg;
 	int32_t _rotateAnimTimerId = -1; //since we have 0 element timerIdMgr, we set it to -1
 	int32_t _scaleAnimationTimeId = -1;
+
+	int32_t scaleSteps = 50;
+	bool isShrinking = true;
 };
 
 

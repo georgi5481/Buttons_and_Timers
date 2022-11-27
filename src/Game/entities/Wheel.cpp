@@ -78,6 +78,8 @@ void Wheel::startAnimation(){
 	}
 	_isAnimationActive = true;
 	startTimer(20, _rotateAnimTimerId, TimerType::PULSE);
+
+	startTimer(100, _scaleAnimationTimeId, TimerType::PULSE);
 }
 
 void Wheel::stopAnimation(){
@@ -96,10 +98,29 @@ void Wheel::processRotAnim(){
 	_wheelImg.rotateRight(5);
 }
 
+void Wheel::processScaleAnim(){
+	--scaleSteps;
+	if(0 == scaleSteps){
+		isShrinking = !isShrinking;
+		scaleSteps = 50;
+	}
+
+	if(isShrinking){
+		_wheelImg.setHeight(_wheelImg.getHeight() -5);
+		_wheelImg.setWidth(_wheelImg.getWidth() -5);
+	}
+	else{
+		_wheelImg.setHeight(_wheelImg.getHeight() + 5);
+		_wheelImg.setWidth(_wheelImg.getWidth() +5);
+	}
+}
 
 void Wheel::onTimeout(int32_t timerId){
 	if(timerId == _rotateAnimTimerId){
 		processRotAnim();
+	}
+	else if(timerId == _scaleAnimationTimeId){
+		processScaleAnim();
 	}
 	else{
 			std::cerr << "Received id unsuported timerId: " << timerId << std::endl;
